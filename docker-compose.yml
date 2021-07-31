@@ -2,23 +2,30 @@ version: "3"
 services:
   master:
     container_name: master
-    image: jenkinsci/jenkins:2.6.1
+    image: jenkins/jenkins:lts
     ports:
       - 8080:8080
     volumes:
-      - ./jenkins_home:/var/jenkins_home
+      - ./jenkins_master:/var/jenkins_home
     links:
       - slave01
       - slave02
 
+
   slave01:
     container_name: slave01
-    image: jenkins/slave
+    image: jenkins/ssh-slave:latest
+    volumes:
+      - ./jenkins_slave:/var/jenkins_home
     environment:
-      - JENKINS_SLAVE_SSH_PUBLIC=
+      - JENKINS_SLAVE_SSH_PUBLIC=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCdZFb/K7+UxdCdbtM9rGKTowu5O2YjsM+9Va3RPy1EG7MfzNf5TKW54tI1QlqGmqe4R8sdXI1gYWnPjr8Acm54pq483JQsCN5gnflCcx9WaYfAyNQ4R3pspDnvtc9i+q67bESFWZ7eiyRAK3MNAAsVbmJpmSLOFMUoK4SAfYsJWNPWzE2VJZx1i1El4BHhIsEX4qcqaPN//ALSxMRUtjOqmQAvCcgvkXQGFAgBs1WtvfPNqwG8IgC5UGdOVgHrZIg6j9ANw1lLKicWizP5i7MNyBkSXbCGHIeeGcm+MJA8UPSWekv8UVXt9a7AyKFHR6Ioz8txteB72WIsmCBpsbFp
+
     
   slave02:
     container_name: slave02
-    image: jenkins/slave
+    image: jenkins/ssh-slave:latest
+    volumes:
+      - ./jenkins_slave:/var/jenkins_home
     environment:
-      - JENKINS_SLAVE_SSH_PUBLIC=
+      - JENKINS_SLAVE_SSH_PUBLIC=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCdZFb/K7+UxdCdbtM9rGKTowu5O2YjsM+9Va3RPy1EG7MfzNf5TKW54tI1QlqGmqe4R8sdXI1gYWnPjr8Acm54pq483JQsCN5gnflCcx9WaYfAyNQ4R3pspDnvtc9i+q67bESFWZ7eiyRAK3MNAAsVbmJpmSLOFMUoK4SAfYsJWNPWzE2VJZx1i1El4BHhIsEX4qcqaPN//ALSxMRUtjOqmQAvCcgvkXQGFAgBs1WtvfPNqwG8IgC5UGdOVgHrZIg6j9ANw1lLKicWizP5i7MNyBkSXbCGHIeeGcm+MJA8UPSWekv8UVXt9a7AyKFHR6Ioz8txteB72WIsmCBpsbFp
+
