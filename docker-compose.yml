@@ -10,7 +10,7 @@ services:
     links:
       - slave01
       - slave02
-
+      
   slave01:
     container_name: slave01
     image: jenkins/ssh-slave:alpine
