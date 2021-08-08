@@ -16,7 +16,7 @@ masterノード起動後、ブラウザで管理画面を開く
 
 masterノードでssh鍵生成
 ```
-docker exec -it master ssh-keygen -t rsa -C""
+docker exec -it master ssh-keygen -t rsa -C ""
 ```
 生成後、ホスト側のディレクトリからも鍵ファイルを参照できるため、公開鍵を確認
 
