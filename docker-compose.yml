@@ -2,7 +2,7 @@ version: "3"
 services:
   master:
     container_name: master
-    image: jenkins/jenkins:lts
+    image: jenkins/jenkins:2.289.3
     ports:
       - 8080:8080
     volumes:
@@ -16,13 +16,13 @@ services:
     image: jenkins/ssh-slave:latest
     volumes:
       - ./jenkins_slave:/var/jenkins_home
-    environment:
-      - JENKINS_SLAVE_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqWOhRBb+TjPyAL8NNkZMqAPopMHUScSct6WRTYQqYwZ74qVvNfVmqrupOwyga7RBwE+BdsvEK0JjK7YY9e3Qm4aEKFWn6tDoMUux68f5TRZlF6ig7+W29hJVJghPVsDOfXS/yahPU8s8mjflTW2pEeY35p6DAC8nAK4Tb5+RLREl0XxHklNsdqlnnAVSfxghTPrtXH7C/RBc1TCCv3dblF/dPNv3Js4Q10grLBusQc1NqafKQCCxxPOGGEilKxMwNDmqEjZ9qwVXOOcLEihH71lXAOFUGTmc6LSlREMJABV9F49KzGe8UL5bikSIjR+5QxBKvdL+h/tRqMY4aqZ5p
-    
+    env_file:
+      - var.env
+
   slave02:
     container_name: slave02
     image: jenkins/ssh-slave:latest
     volumes:
       - ./jenkins_slave:/var/jenkins_home
-    environment:
-      - JENKINS_SLAVE_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqWOhRBb+TjPyAL8NNkZMqAPopMHUScSct6WRTYQqYwZ74qVvNfVmqrupOwyga7RBwE+BdsvEK0JjK7YY9e3Qm4aEKFWn6tDoMUux68f5TRZlF6ig7+W29hJVJghPVsDOfXS/yahPU8s8mjflTW2pEeY35p6DAC8nAK4Tb5+RLREl0XxHklNsdqlnnAVSfxghTPrtXH7C/RBc1TCCv3dblF/dPNv3Js4Q10grLBusQc1NqafKQCCxxPOGGEilKxMwNDmqEjZ9qwVXOOcLEihH71lXAOFUGTmc6LSlREMJABV9F49KzGe8UL5bikSIjR+5QxBKvdL+h/tRqMY4aqZ5p
+    env_file:
+      - var.env
