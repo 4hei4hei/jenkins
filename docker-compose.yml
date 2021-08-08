@@ -1,8 +1,8 @@
-version: "3"
+version: "3.8"
 services:
   master:
     container_name: master
-    image: jenkins/jenkins:lts
+    image: jenkins/jenkins:2.289.3
     ports:
       - 8080:8080
     volumes:
@@ -13,16 +13,16 @@ services:
       
   slave01:
     container_name: slave01
-    image: jenkins/ssh-slave:latest
+    image: jenkins/ssh-slave:alpine
     volumes:
-      - ./jenkins_slave:/var/jenkins_home
+      - ./jenkins_slave:/home/jenkins
     env_file:
       - var.env
 
   slave02:
     container_name: slave02
-    image: jenkins/ssh-slave:latest
+    image: jenkins/ssh-slave:alpine
     volumes:
-      - ./jenkins_slave:/var/jenkins_home
+      - ./jenkins_slave:/home/jenkins
     env_file:
       - var.env
