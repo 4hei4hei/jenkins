@@ -3,6 +3,22 @@ DockerでJenkinsを起動する
 
 masterノードとslave2台をcomposeで起動する
 
+ignoreされているだけで、実際はリポジトリ内にvar.envが存在し、環境変数をコンテナに受け渡ししている
+```
+❯ tree -L 1
+.
+├── README.md
+├── docker-compose.yml
+├── jenkins_master
+├── jenkins_slave
+└── var.env
+
+❯ cat var.env 
+JENKINS_SLAVE_SSH_PUBKEY=********************...
+```
+
+
+
 # 雑セットアップ手順
 最初に以下を実行
 
