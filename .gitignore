@@ -1,3 +1,5 @@
-jenkins_master/
-jenkins_slave/
 var.env
+jenkins_master/
+jenkins_slave1/
+jenkins_slave2/
+

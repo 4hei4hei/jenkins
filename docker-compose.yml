@@ -15,7 +15,7 @@ services:
     container_name: slave01
     image: jenkins/ssh-slave:alpine
     volumes:
-      - ./jenkins_slave:/home/jenkins
+      - ./jenkins_slave1:/home/jenkins
     env_file:
       - var.env
 
@@ -23,6 +23,6 @@ services:
     container_name: slave02
     image: jenkins/ssh-slave:alpine
     volumes:
-      - ./jenkins_slave:/home/jenkins
+      - ./jenkins_slave2:/home/jenkins
     env_file:
       - var.env
